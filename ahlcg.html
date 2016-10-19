@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="ahlcg">
+<head>
+  <link rel="stylesheet" type="text/css" href="/Users/Chris/Code/AHLCG/client/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/Users/Chris/Code/AHLCG/ahlcg.css">
+
+  <script src="/Users/chris/Code/AHLCG/jquery-3.1.0.min.js"></script>
+  <script src="/Users/chris/Code/AHLCG/client/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/Users/chris/Code/AHLCG/client/lib/angular.min.js"></script>
+  <script src="/Users/chris/Code/AHLCG/ahlcg.js"></script>
+
+</head>
+
+<body>
+  <div ng-controller="ArkhamController" class="container">
+    <div>AHLCG</div>
+    <div class="player-data player1">
+      <div class="player-name">
+        Name: <span>{{player1.name}}</span>
+      </div>
+      <div class="player-actions">
+        <button class="btn btn-success" ng-click="player1.draw()">Draw</button>
+        <button class="btn btn-primary" ng-click="player1.deck.shuffle()">Shuffle</button>
+      </div>
+      <div class="player-deck">
+        <div class="deck-length">
+          Deck Size: <span>{{player1.deck.cards.length}}</span>
+        </div>
+        <div class="deck-list">
+          Deck List: <span>{{player1.get_deckstring()}}</span>
+        </div>
+      </div>
+      <div class="player-hand">
+        <div class="hand-list">
+          Hand List: <span>{{player1.get_handstring()}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="player-data player2">
+      <div class="player-name">
+        Name: <span>{{player2.name}}</span>
+      </div>
+      <div class="player-actions">
+        <button class="btn btn-success" ng-click="player2.draw()">Draw</button>
+        <button class="btn btn-primary" ng-click="player2.deck.shuffle()">Shuffle</button>
+      </div>
+      <div class="player-deck">
+        <div class="deck-length">
+          Deck Size: <span ng-repeat"card">{{player2.deck.cards.length}}</span>
+        </div>
+        <div class="deck-list">
+          Deck List: <span>{{player2.get_deckstring()}}</span>
+        </div>
+        <div class="player-hand">
+          <div class="hand-list">
+            Hand List: <span>{{player2.get_handstring()}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
