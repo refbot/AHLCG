@@ -1,6 +1,10 @@
+console.log('app.js');
 var express = require('express');
 var app = express();
 var serv = require('http').Server(app);
+
+var player = require('./server/player.js');
+var g = require('./server/game.js');
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/client/index.html');
@@ -18,17 +22,21 @@ io.sockets.on('connection', function(socket) {
     SOCKET_LIST[socket.id] = socket;
 
     console.log('socket connection:' + socket.id);
-})
 
-setInterval(function(){
-  var pack = [];
-  for (var i in SOCKET_LIST) {
-    socket = SOCKET_LIST[i];
-    socket.x++;
-    socket.y++;
-    socket.emit('newPosition', {
-      x: socket.x,
-      y: socket.y
+    socket.on('happy', function(socket) {
+      console.log('happy received');
+    })
+
+    var test_player = new player.Player('Chris');
+
+    var game = new g.Game(test_player);
+
+    // console.log(test_player);
+
+    socket.emit('gameData', {
+      'player': test_player.name ,
+      // 'game': game,
+      // 'player': test_player
     });
-  }
+
 });

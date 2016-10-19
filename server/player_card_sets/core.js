@@ -1,3 +1,4 @@
+console.log('player-core.js');
 class AgnesBaker extends InvestigatorCard {
   constructor(owner) {
     var stats = {

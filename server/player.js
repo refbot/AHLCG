@@ -1,3 +1,5 @@
+console.log('player.js');
+
 class Player {
   constructor(name) {
     this.name = name;
@@ -103,3 +105,5 @@ class Discard {
     this.cards = [];
   }
 }
+
+var exports = module.exports = {'Player': Player, 'Hand': Hand, 'Deck': Deck, 'Discard': Discard};
